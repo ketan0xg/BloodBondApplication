@@ -1,0 +1,516 @@
+﻿@{
+    Layout = null;
+    ViewBag.Title = "Contact";
+}
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <title>@ViewBag.Title-Blood Donation </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="Reddrop Buddies - Blood Donation Campaign & Multi-Concept Activism Template">
+    <meta name="author" content="xenioushk">
+    <link rel="shortcut icon" href="~/Content/Template/images/favicon.png" />
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!-- The styles -->
+    <link rel="stylesheet" href="~/Content/Template/css/bootstrap.min.css" />
+    <link href="~/Content/Template/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="~/Content/Template/css/animate.css" rel="stylesheet" type="text/css">
+    <link href="~/Content/Template/css/owl.carousel.css" rel="stylesheet" type="text/css">
+    <link href="~/Content/Template/css/venobox.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="~/Content/Template/css/styles.css" />
+
+</head>
+
+<body>
+
+    <div id="preloader">
+        <span class="margin-bottom"><img src="~/Content/Template/images/loader.gif" alt="" /></span>
+    </div>
+
+    <!--  HEADER -->
+
+    <style>
+        /* Font Awesome Icons */
+        @@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css');
+    </style>
+    <header class="main-header clearfix" data-sticky_header="true">
+        <section class="header-wrapper navgiation-wrapper">
+            <div class="navbar navbar-default">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <img alt="Logo" src="~/Content/Template/images/logo1.png" style="width: 120px; height: auto; object-fit: contain; margin-left: 0; ">
+                    </div>
+                    @{
+                        int usertypeid = 0;
+                        int userid = 0;
+                        string sessionusertype = Convert.ToString(Session["UserTypeID"]);
+                        string userID = Convert.ToString(Session["UserID"]);
+                        int.TryParse(sessionusertype, out usertypeid);
+                        int.TryParse(userID, out userid);
+
+                        <div class="navbar-collapse collapse">
+                            <ul class="nav navbar-nav navbar-right">
+                                <!-- Home -->
+                                <li>
+                                    <a href="@Url.Content("~/Home/MainHome")">
+                                        <i class="fas fa-home"></i> Home
+                                    </a>
+                                </li>
+
+                                <!-- About Us -->
+                                <li>
+                                    <a href="@Url.Content("~/Home/AboutUs")">
+                                        <i class="fas fa-info-circle"></i> About Us <i class="fas fa-caret-down"></i>
+                                    </a>
+                                    <ul class="drop-down">
+                                        <li>
+                                            <a href="@Url.Content("~/Home/Contact")">
+                                                <i class="fas fa-envelope"></i> Contact
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="@Url.Content("~/Home/FAQ")">
+                                                <i class="fas fa-question-circle"></i> FAQ
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+
+                                <!-- Find Donor -->
+                                @if (usertypeid != 1)
+                                {
+                                    <li>
+                                        <a href="@Url.Content("~/Finder/FinderDonors")">
+                                            <i class="fas fa-search"></i> Find Donor
+                                        </a>
+                                    </li>
+                                }
+
+                                <!-- Accounts Request -->
+                                @if (usertypeid == 1)
+                                {
+                                    <li>
+                                        <a href="@Url.Content("~/Accounts/AllNewUserRequests")" title="Accounts Request">
+                                            <i class="fas fa-user-plus"></i> Accounts Request
+                                        </a>
+                                    </li>
+                                }
+
+                                <!-- All Request -->
+                                @if (usertypeid == 3 || usertypeid == 4)
+                                {
+                                    <li>
+                                        <a href="@Url.Content("~/Finder/ShowAllRequests")" title="All Request">
+                                            <i class="fas fa-list"></i> All Request
+                                        </a>
+                                    </li>
+                                }
+
+                                <!-- Seeker Request -->
+                                @if (usertypeid == 2 || usertypeid == 5)
+                                {
+                                    <li>
+                                        <a href="@Url.Content("~/Finder/DonorRequests")" title="All Request">
+                                            <i class="fas fa-hand-holding-heart"></i> Seeker Request
+                                        </a>
+                                    </li>
+                                }
+
+                                <!-- Campaign -->
+                                <li>
+                                    <a href="#">
+                                        <i class="fas fa-calendar-alt"></i> Campaign <i class="fas fa-caret-down"></i>
+                                    </a>
+                                    <ul class="drop-down">
+                                        <li>
+                                            <a href="@Url.Content("~/Home/AllCampaigns")">
+                                                <i class="fas fa-list"></i> All Campaigns
+                                            </a>
+                                        </li>
+                                        @if (usertypeid == 5)
+                                        {
+                                            <li>
+                                                <a href="@Url.Content("~/BloodBank/AllCampaigns")">
+                                                    <i class="fas fa-plus"></i> Add Campaign
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="@Url.Content("~/BloodBank/BloodBankStock")">
+                                                    <i class="fas fa-tint"></i> Stock
+                                                </a>
+                                            </li>
+                                        }
+                                    </ul>
+                                </li>
+
+                                <!-- Setting -->
+                                @if (usertypeid == 1)
+                                {
+                                    <li>
+                                        <a href="#">
+                                            <i class="fas fa-cog"></i> Setting <i class="fas fa-caret-down"></i>
+                                        </a>
+                                        <ul class="drop-down">
+                                            <li>
+                                                <a href="@Url.Content("~/User/UserProfile/" +userid+ "")">
+                                                    <i class="fas fa-user"></i> User Profile
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="@Url.Content("~/AccountStatus/AllAccountStatus")">
+                                                    <i class="fas fa-user-check"></i> Account Status
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="@Url.Content("~/BloodGroup/AllBloodGroups")">
+                                                    <i class="fas fa-tint"></i> Blood Group
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="@Url.Content("~/CityTables/Index")">
+                                                    <i class="fas fa-city"></i> Cities
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="@Url.Content("~/RequestType/AllRequestType")">
+                                                    <i class="fas fa-list-alt"></i> Request Type
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="@Url.Content("~/UserType/AllUserType")">
+                                                    <i class="fas fa-users-cog"></i> User Type
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="@Url.Content("~/Home/Logout")">
+                                                    <i class="fas fa-sign-out-alt"></i> LOG OUT
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                }
+                                else if (usertypeid > 1)
+                                {
+                                    <li>
+                                        <a href="#">
+                                            <i class="fas fa-cog"></i> Setting <i class="fas fa-caret-down"></i>
+                                        </a>
+                                        <ul class="drop-down">
+                                            <li>
+                                                <a href="@Url.Content("~/User/UserProfile/"+userid+"")">
+                                                    <i class="fas fa-user"></i> User Profile
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="@Url.Content("~/Home/Logout")">
+                                                    <i class="fas fa-sign-out-alt"></i> LOG OUT
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                }
+
+                                <!-- Register Button -->
+                                @if (string.IsNullOrEmpty(Convert.ToString(Session["UserName"])))
+                                {
+                                    <li>
+                                        <a href="@Url.Action("MainHome", "Home")#registration-section">
+                                            <i class="fas fa-user-plus"></i> Register
+                                        </a>
+                                    </li>
+                                }
+
+                                <!-- Login/Logout Button -->
+                                <li>
+                                    @if (string.IsNullOrEmpty(Convert.ToString(Session["UserName"])))
+                                    {
+                                        <a href="@Url.Content("~/Home/Login")" id="btn_submit">
+                                            <i class="fas fa-sign-in-alt"></i> LOG IN
+                                        </a>
+                                    }
+                                    @*else
+                                        {
+                                            <a href="@Url.Content("~/Home/Logout")" id="btn_submit">
+                                                <i class="fas fa-sign-out-alt"></i> LOG OUT
+                                            </a>
+                                        }*@
+                                </li>
+                            </ul>
+                        </div>
+                    }
+                </div>
+            </div>
+        </section>
+    </header> <!-- end main-header  -->
+
+    <section class="page-header" data-stellar-background-ratio="1.2">
+        <div class="container-fluid">
+            <!-- Changed to container-fluid -->
+            <div class="row">
+                <div class="col-sm-12 text-center">
+                    <h3>Contact Us</h3>
+                    <p class="page-breadcrumb">
+                        <a href="#">Home</a> / Contact
+                    </p>
+                </div>
+            </div> <!-- end .row  -->
+        </div> <!-- end .container-fluid  -->
+    </section> <!-- end .page-header  -->
+    <!--  MAIN CONTENT  -->
+    <section class="section-content-block" style="padding-top: 40px; padding-bottom: 40px; background-color: #f9f9f9;">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <h2 class="contact-title" style="font-size: 36px; color: #333; margin-bottom: 30px; font-weight: 700;">Get in Touch</h2>
+                    <p class="subtitle" style="font-size: 18px; color: #666; max-width: 600px; margin: 0 auto 40px;">
+                        We're here to help! Reach out to us via any of the channels below.
+                    </p>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-md-3 text-center">
+                    <div class="contact-card" style="background: #fff; padding: 30px; border-radius: 10px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); transition: transform 0.3s ease;">
+                        <span class="icon-container" style="font-size: 40px; color: #e74c3c; margin-bottom: 20px;">
+                            <i class="fa fa-home"></i>
+                        </span>
+                        <h3 style="font-size: 20px; color: #333; margin-bottom: 15px;">Our Address</h3>
+                        <address style="font-size: 16px; color: #666;">Blood Bond, Dombivli East, Maharashtra</address>
+                    </div>
+                </div>
+                <div class="col-md-3 text-center">
+                    <div class="contact-card" style="background: #fff; padding: 30px; border-radius: 10px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); transition: transform 0.3s ease;">
+                        <span class="icon-container" style="font-size: 40px; color: #3498db; margin-bottom: 20px;">
+                            <i class="fa fa-phone"></i>
+                        </span>
+                        <h3 style="font-size: 20px; color: #333; margin-bottom: 15px;">Call Us</h3>
+                        <a href="tel:+917900047908" style="font-size: 16px; color: #666; text-decoration: none;">+91 7900047908</a>
+                    </div>
+                </div>
+                <div class="col-md-3 text-center">
+                    <div class="contact-card" style="background: #fff; padding: 30px; border-radius: 10px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); transition: transform 0.3s ease;">
+                        <span class="icon-container" style="font-size: 40px; color: #2ecc71; margin-bottom: 20px;">
+                            <i class="fa fa-envelope"></i>
+                        </span>
+                        <h3 style="font-size: 20px; color: #333; margin-bottom: 15px;">Email Us</h3>
+                        <a href="mailto:bloodbond247@gmail.com" style="font-size: 16px; color: #666; text-decoration: none;">bloodbond247@gmail.com</a>
+                    </div>
+                </div>
+                <div class="col-md-3 text-center">
+                    <div class="contact-card" style="background: #fff; padding: 30px; border-radius: 10px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); transition: transform 0.3s ease;">
+                        <span class="icon-container" style="font-size: 40px; color: #9b59b6; margin-bottom: 20px;">
+                            <i class="fa fa-globe"></i>
+                        </span>
+                        <h3 style="font-size: 20px; color: #333; margin-bottom: 15px;">Visit Us</h3>
+                        <a href="#" style="font-size: 16px; color: #666; text-decoration: none;">www.bloodbond.com</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-content-block" style="padding-top: 40px; padding-bottom: 40px;">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <h2 class="contact-title" style="font-size: 36px; color: #333; margin-bottom: 30px; font-weight: 700;">Why Choose Us?</h2>
+                    <p class="subtitle" style="font-size: 18px; color: #666; max-width: 800px; margin: 0 auto 40px;">
+                        At Blood Bond, we are committed to saving lives and making a difference. Here’s why we stand out:
+                    </p>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-md-4 text-center">
+                    <div class="feature-card" style="background: #fff; padding: 30px; border-radius: 10px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); transition: transform 0.3s ease;">
+                        <span class="icon-container" style="font-size: 40px; color: #e74c3c; margin-bottom: 20px;">
+                            <i class="fa fa-heartbeat"></i>
+                        </span>
+                        <h3 style="font-size: 20px; color: #333; margin-bottom: 15px;">Life-Saving Mission</h3>
+                        <p style="font-size: 16px; color: #666;">
+                            We are dedicated to providing safe and reliable blood donation services to those in need.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-4 text-center">
+                    <div class="feature-card" style="background: #fff; padding: 30px; border-radius: 10px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); transition: transform 0.3s ease;">
+                        <span class="icon-container" style="font-size: 40px; color: #3498db; margin-bottom: 20px;">
+                            <i class="fa fa-users"></i>
+                        </span>
+                        <h3 style="font-size: 20px; color: #333; margin-bottom: 15px;">Experienced Team</h3>
+                        <p style="font-size: 16px; color: #666;">
+                            Our team of professionals is highly trained and passionate about making a difference.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-4 text-center">
+                    <div class="feature-card" style="background: #fff; padding: 30px; border-radius: 10px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); transition: transform 0.3s ease;">
+                        <span class="icon-container" style="font-size: 40px; color: #2ecc71; margin-bottom: 20px;">
+                            <i class="fa fa-check-circle"></i>
+                        </span>
+                        <h3 style="font-size: 20px; color: #333; margin-bottom: 15px;">Trusted & Reliable</h3>
+                        <p style="font-size: 16px; color: #666;">
+                            We adhere to the highest standards of safety and quality in all our services.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-content-block" style="padding-top: 40px; padding-bottom: 40px;">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <h2 class="contact-title" style="font-size: 36px; color: #333; margin-bottom: 30px; font-weight: 700;">Our Location</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="section-google-map-block" style="border-radius: 10px; overflow: hidden; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3767.5305080807093!2d73.09361717520885!3d19.21569788201785!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7958c36cc6e9d%3A0xd85f75ed07bd0d3f!2sPlasma%20Blood%20Bank!5e0!3m2!1sen!2sin!4v1741593667082!5m2!1sen!2sin"
+                                width="100%"
+                                height="450"
+                                style="border:0;"
+                                allowfullscreen=""
+                                loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section> <!-- end .section-content-block  -->
+
+    <footer style="background-color: #8a0303; color: #ffffff; padding: 50px 0; font-family: 'Arial', sans-serif;">
+
+        <div style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+
+            <!-- Footer Columns -->
+            <div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 30px;">
+
+                <!-- Column 1: About -->
+                <div style="flex: 1; min-width: 250px; margin: 10px;">
+                    <h3 style="color: #ffffff; font-size: 24px; margin-bottom: 20px; text-transform: uppercase;">Donate Blood, Save Lives</h3>
+                    <p style="font-size: 14px; line-height: 1.8; color: #f0f0f0;">
+                        Join us in our mission to provide life-saving blood to those in need. Your donation can make a difference!
+                    </p>
+                    <!-- Call-to-Action Button -->
+                    <a href="#" style="display: inline-block; background-color: #ffffff; color: #8a0303; padding: 10px 20px; text-decoration: none; font-size: 14px; border-radius: 5px; margin-top: 15px; transition: background-color 0.3s ease;">
+                        Donate Now
+                    </a>
+                </div>
+
+                <!-- Column 2: Quick Links -->
+                <div style="flex: 1; min-width: 250px; margin: 10px;">
+                    <h3 style="color: #ffffff; font-size: 24px; margin-bottom: 20px; text-transform: uppercase;">Quick Links</h3>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: 12px;">
+                            <a href="@Url.Action("FinderDonors", "Finder")" style="color: #f0f0f0; text-decoration: none; font-size: 14px; transition: color 0.3s ease; display: flex; align-items: center;">
+                                <i class="fa fa-heartbeat" style="margin-right: 10px; color: #ffffff;"></i> Find a Donor
+                            </a>
+                        </li>
+                        <li style="margin-bottom: 12px;">
+                            <a href="@Url.Action("FAQ", "Home")" style="color: #f0f0f0; text-decoration: none; font-size: 14px; transition: color 0.3s ease; display: flex; align-items: center;">
+                                <i class="fa fa-tint" style="margin-right: 10px; color: #ffffff;"></i> FAQ
+                            </a>
+                        </li>
+                        <li style="margin-bottom: 12px;">
+                            <a href="@Url.Action("AllCampaigns", "Home")" style="color: #f0f0f0; text-decoration: none; font-size: 14px; transition: color 0.3s ease; display: flex; align-items: center;">
+                                <i class="fa fa-calendar" style="margin-right: 10px; color: #ffffff;"></i> Upcoming Camps
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+
+                <!-- Column 3: Contact Info -->
+                <div style="flex: 1; min-width: 250px; margin: 10px;">
+                    <h3 style="color: #ffffff; font-size: 24px; margin-bottom: 20px; text-transform: uppercase;">Contact Us</h3>
+                    <p style="font-size: 14px; line-height: 1.8; color: #f0f0f0;">
+                        <i class="fa fa-map-marker" style="margin-right: 10px; color: #ffffff;"></i>
+                        <a href="https://www.google.com/maps/place/Dombivli+East,+Maharashtra" target="_blank" style="color: #ffffff; text-decoration: none;">Blood Bond, Dombivli East, Maharashtra</a>
+                        <br>
+
+                        <i class="fa fa-phone" style="margin-right: 10px; color: #ffffff;"></i>
+                        <a href="tel:+91 79000 47908" style="color: #ffffff; text-decoration: none;">+91 79000 47908</a>
+                        <br>
+
+                        <i class="fa fa-envelope" style="margin-right: 10px; color: #ffffff;"></i>
+                        <a href="mailto:bloodbond247@gmail.com" style="color: #ffffff; text-decoration: none;">bloodbond247@gmail.com</a>
+
+                    </p>
+                    <!-- Social Media Icons -->
+                    <div class="top-bar-social" style="margin-top: 20px; display: flex; justify-content: center; gap: 15px;">
+                        <a href="https://www.facebook.com/profile.php?id=61573556836084&ref=xav_pl_fb_external_link_ios" style="text-decoration: none; color: #ffffff; transition: transform 0.3s ease;">
+                            <i class="fab fa-facebook-f" style="background-color: rgba(255, 255, 255, 0.1); padding: 12px; border-radius: 50%; width: 45px; height: 45px; text-align: center; line-height: 45px; font-size: 18px; transition: all 0.3s ease;"></i>
+                        </a>
+
+                        <a href="https://www.instagram.com/bloodbond_24x7?igsh=MXhscTNweXk0bzA3dg==" style="text-decoration: none; color: #ffffff; transition: transform 0.3s ease;">
+                            <i class="fab fa-instagram" style="background-color: rgba(255, 255, 255, 0.1); padding: 12px; border-radius: 50%; width: 45px; height: 45px; text-align: center; line-height: 45px; font-size: 18px; transition: all 0.3s ease;"></i>
+                        </a>
+
+
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Footer Bottom -->
+            <div style="text-align: center; margin-top: 40px; border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 20px;">
+                <p style="font-size: 14px; margin: 0; color: #f0f0f0;">
+                    &copy; 2025 Blood Bond. All Rights Reserved.
+                </p>
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <!-- END FOOTER  -->
+    <!-- Back To Top Button  -->
+    @*<a id="backTop">Back To Top</a>*@
+<script type="text/javascript">
+    (function (d, t) {
+        var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
+        v.onload = function () {
+            window.voiceflow.chat.load({
+                verify: { projectID: '67e166fbb38caa87c5ed2c32' },
+                url: 'https://general-runtime.voiceflow.com',
+                versionID: 'production',
+                voice: {
+                    url: "https://runtime-api.voiceflow.com"
+                }
+            });
+        }
+        v.src = "https://cdn.voiceflow.com/widget-next/bundle.mjs"; v.type = "text/javascript"; s.parentNode.insertBefore(v, s);
+    })(document, 'script');
+</script>
+
+    <script src="~/Content/Template/js/jquery.min.js"></script>
+    <script src="~/Content/Template/js/bootstrap.min.js"></script>
+    <script src="~/Content/Template/js/wow.min.js"></script>
+    <script src="~/Content/Template/js/jquery.backTop.min.js "></script>
+    <script src="~/Content/Template/js/waypoints.min.js"></script>
+    <script src="~/Content/Template/js/waypoints-sticky.min.js"></script>
+    <script src="~/Content/Template/js/owl.carousel.min.js"></script>
+    <script src="~/Content/Template/js/jquery.stellar.min.js"></script>
+    <script src="~/Content/Template/js/jquery.counterup.min.js"></script>
+    <script src="~/Content/Template/js/venobox.min.js"></script>
+    <script src="~/Content/Template/js/custom-scripts.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,631 @@
+﻿@{
+
+    ViewBag.Title = "About Us ";
+    Layout = null;
+}
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <title>Online Blood Donation </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="Reddrop Buddies - Blood Donation Campaign & Multi-Concept Activism Template">
+    <meta name="author" content="xenioushk">
+    <link rel="shortcut icon" href="~/Content/Template/images/favicon.png" />
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!-- The styles -->
+    <link rel="stylesheet" href="~/Content/Template/css/bootstrap.min.css" />
+    <link href="~/Content/Template/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="~/Content/Template/css/animate.css" rel="stylesheet" type="text/css">
+    <link href="~/Content/Template/css/owl.carousel.css" rel="stylesheet" type="text/css">
+    <link href="~/Content/Template/css/venobox.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="~/Content/Template/css/styles.css" />
+
+</head>
+
+
+<body>
+    <div id="preloader">
+        <span class="margin-bottom"><img src="~/Content/Template/images/loader.gif" alt="" /></span>
+    </div>
+
+
+    <style>
+        /* Font Awesome Icons */
+        @@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css');
+    </style>
+    <header class="main-header clearfix" data-sticky_header="true">
+        <section class="header-wrapper navgiation-wrapper">
+            <div class="navbar navbar-default">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <img alt="Logo" src="~/Content/Template/images/logo1.png" style="width: 120px; height: auto; object-fit: contain; margin-left: 0; ">
+                    </div>
+                    @{
+                        int usertypeid = 0;
+                        int userid = 0;
+                        string sessionusertype = Convert.ToString(Session["UserTypeID"]);
+                        string userID = Convert.ToString(Session["UserID"]);
+                        int.TryParse(sessionusertype, out usertypeid);
+                        int.TryParse(userID, out userid);
+
+                        <div class="navbar-collapse collapse">
+                            <ul class="nav navbar-nav navbar-right">
+                                <!-- Home -->
+                                <li>
+                                    <a href="@Url.Content("~/Home/MainHome")">
+                                        <i class="fas fa-home"></i> Home
+                                    </a>
+                                </li>
+
+                                <!-- About Us -->
+                                <li>
+                                    <a href="@Url.Content("~/Home/AboutUs")">
+                                        <i class="fas fa-info-circle"></i> About Us <i class="fas fa-caret-down"></i>
+                                    </a>
+                                    <ul class="drop-down">
+                                        <li>
+                                            <a href="@Url.Content("~/Home/Contact")">
+                                                <i class="fas fa-envelope"></i> Contact
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="@Url.Content("~/Home/FAQ")">
+                                                <i class="fas fa-question-circle"></i> FAQ
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+
+                                <!-- Find Donor -->
+                                @if (usertypeid != 1)
+                                {
+                                    <li>
+                                        <a href="@Url.Content("~/Finder/FinderDonors")">
+                                            <i class="fas fa-search"></i> Find Donor
+                                        </a>
+                                    </li>
+                                }
+
+                                <!-- Accounts Request -->
+                                @if (usertypeid == 1)
+                                {
+                                    <li>
+                                        <a href="@Url.Content("~/Accounts/AllNewUserRequests")" title="Accounts Request">
+                                            <i class="fas fa-user-plus"></i> Accounts Request
+                                        </a>
+                                    </li>
+                                }
+
+                                <!-- All Request -->
+                                @if (usertypeid == 3 || usertypeid == 4)
+                                {
+                                    <li>
+                                        <a href="@Url.Content("~/Finder/ShowAllRequests")" title="All Request">
+                                            <i class="fas fa-list"></i> All Request
+                                        </a>
+                                    </li>
+                                }
+
+                                <!-- Seeker Request -->
+                                @if (usertypeid == 2 || usertypeid == 5)
+                                {
+                                    <li>
+                                        <a href="@Url.Content("~/Finder/DonorRequests")" title="All Request">
+                                            <i class="fas fa-hand-holding-heart"></i> Seeker Request
+                                        </a>
+                                    </li>
+                                }
+
+                                <!-- Campaign -->
+                                <li>
+                                    <a href="#">
+                                        <i class="fas fa-calendar-alt"></i> Campaign <i class="fas fa-caret-down"></i>
+                                    </a>
+                                    <ul class="drop-down">
+                                        <li>
+                                            <a href="@Url.Content("~/Home/AllCampaigns")">
+                                                <i class="fas fa-list"></i> All Campaigns
+                                            </a>
+                                        </li>
+                                        @if (usertypeid == 5)
+                                        {
+                                            <li>
+                                                <a href="@Url.Content("~/BloodBank/AllCampaigns")">
+                                                    <i class="fas fa-plus"></i> Add Campaign
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="@Url.Content("~/BloodBank/BloodBankStock")">
+                                                    <i class="fas fa-tint"></i> Stock
+                                                </a>
+                                            </li>
+                                        }
+                                    </ul>
+                                </li>
+
+                                <!-- Setting -->
+                                @if (usertypeid == 1)
+                                {
+                                    <li>
+                                        <a href="#">
+                                            <i class="fas fa-cog"></i> Setting <i class="fas fa-caret-down"></i>
+                                        </a>
+                                        <ul class="drop-down">
+                                            <li>
+                                                <a href="@Url.Content("~/User/UserProfile/" +userid+ "")">
+                                                    <i class="fas fa-user"></i> User Profile
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="@Url.Content("~/AccountStatus/AllAccountStatus")">
+                                                    <i class="fas fa-user-check"></i> Account Status
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="@Url.Content("~/BloodGroup/AllBloodGroups")">
+                                                    <i class="fas fa-tint"></i> Blood Group
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="@Url.Content("~/CityTables/Index")">
+                                                    <i class="fas fa-city"></i> Cities
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="@Url.Content("~/RequestType/AllRequestType")">
+                                                    <i class="fas fa-list-alt"></i> Request Type
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="@Url.Content("~/UserType/AllUserType")">
+                                                    <i class="fas fa-users-cog"></i> User Type
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="@Url.Content("~/Home/Logout")">
+                                                    <i class="fas fa-sign-out-alt"></i> LOG OUT
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                }
+                                else if (usertypeid > 1)
+                                {
+                                    <li>
+                                        <a href="#">
+                                            <i class="fas fa-cog"></i> Setting <i class="fas fa-caret-down"></i>
+                                        </a>
+                                        <ul class="drop-down">
+                                            <li>
+                                                <a href="@Url.Content("~/User/UserProfile/"+userid+"")">
+                                                    <i class="fas fa-user"></i> User Profile
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="@Url.Content("~/Home/Logout")">
+                                                    <i class="fas fa-sign-out-alt"></i> LOG OUT
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                }
+
+                                <!-- Register Button -->
+                                @if (string.IsNullOrEmpty(Convert.ToString(Session["UserName"])))
+                                {
+                                    <li>
+                                        <a href="@Url.Action("MainHome", "Home")#registration-section">
+                                            <i class="fas fa-user-plus"></i> Register
+                                        </a>
+                                    </li>
+                                }
+
+                                <!-- Login/Logout Button -->
+                                <li>
+                                    @if (string.IsNullOrEmpty(Convert.ToString(Session["UserName"])))
+                                    {
+                                        <a href="@Url.Content("~/Home/Login")" id="btn_submit">
+                                            <i class="fas fa-sign-in-alt"></i> LOG IN
+                                        </a>
+                                    }
+                                    @*else
+                                        {
+                                            @Html.ActionLink("LOG OUT", "Logout", "Home", null, new { @id = "btn_submit" })
+                                        }*@
+                                </li>
+                            </ul>
+                        </div>
+                    }
+                </div>
+            </div>
+        </section>
+    </header>
+
+    <!-- end main-header  -->
+    <!--  PAGE HEADING -->
+
+
+    <section class="page-header">
+
+        <div class="container">
+
+            <div class="row">
+
+                <div class="col-sm-12 text-center">
+
+                    <h3>
+                        About Us
+                    </h3>
+
+                    <p class="page-breadcrumb">
+                        <a href="#">Home</a> / About Us
+                    </p>
+
+
+                </div>
+
+            </div>
+            <!-- end .row  -->
+        </div> <!-- end .container  -->
+    </section>
+    <!-- end .page-header  -->
+    <!--  FEATURED ABOUT US SECTION-->
+
+    <section class="section-content-block">
+
+        <div class="container">
+
+            <div class="row">
+
+                <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+
+                    <div class="about-us-container theme-custom-box-shadow">
+
+                        <div class="row section-heading-wrapper margin-bottom-11">
+
+                            <div class="col-lg-12 col-md-12 col-sm-12 text-left no-img-separator">
+                                <h2><strong>Who We Are?</strong></h2>
+                                <span class="heading-separator heading-separator-horizontal"></span>
+                            </div> <!-- end .col-sm-10  -->
+
+                        </div>
+
+                        <div class="about-details">
+
+                            <p>Blood Bond is a trusted platform in India, dedicated to saving lives by connecting blood donors with those in need. We are committed to making blood donation simple, efficient, and impactful across the country.</p>
+
+                            <ul class="custom-bullet-list">
+                                <li>Expert blood donors and professional medical supervision.</li>
+                                <li>Seamless communication between donors and recipients.</li>
+                                <li>Advanced assessment and high-quality care for all.</li>
+                                <li>Rigorous processes to ensure safety and alignment with Indian healthcare standards.</li>
+                                <li>Comprehensive support from a dedicated team of healthcare professionals.</li>
+                            </ul>
+
+
+
+                        </div> <!--  end .about-details -->
+
+                    </div>
+
+                </div> <!--  end .col-lg-6 col-md-6 col-sm-12 col-xs-12 -->
+
+
+                <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+
+                    <figure class="about-img theme-custom-box-shadow">
+                        <a class="venobox wow bounceIn" data-vbtype="video" data-autoplay="true" href="https://youtu.be/_JlmwDqaYA0?si=2cFkhLY6sDz1xf3e" aria-label="Play Video About Blood Bond">
+                            <i class="fa fa-play"></i>
+                        </a>
+                        <img src="~/Content/Template/images/about_feat_bg.png" alt="Blood Bond - Saving Lives Across India" />
+                    </figure> <!-- end .cause-img  -->
+
+                </div> <!--  end .col-lg-6 col-md-6 col-sm-12 col-xs-12  -->
+
+            </div> <!--  end .row  -->
+        </div>
+
+    </section> <!--  end .section-about-us -->
+    <!-- SECTION TEAM   -->
+    <!--  COUNTER SECTION 02  -->
+
+    <section class="section-content-block section-secondary-bg">
+
+        <div class="container wow fadeInUp">
+
+            <div class="row section-heading-wrapper">
+
+                <div class="col-md-12 col-sm-12 text-center">
+                    <h2>OUR ACHIEVEMENTS</h2>
+                    <h4>We have been working since 1973 with a prestigious vision to helping patient to provide blood.</h4>
+                </div> <!-- end .col-sm-12  -->
+
+            </div>
+
+            <div class="row wow fadeIn">
+
+                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+
+                    <div class="counter-block-1 text-center">
+
+                        <i class="fa fa-heartbeat icon"></i>
+                        <span class="counter">2578</span>
+                        <h4 class="text-capitalize">Blood Banks </h4>
+
+                    </div>
+
+                </div> <!--  end .col-lg-3  -->
+
+                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+
+                    <div class="counter-block-1 text-center">
+
+                        <i class="fa fa-stethoscope icon"></i>
+                        <span class="counter">3235</span>
+                        <h4 class="text-capitalize">Seekers</h4>
+
+                    </div>
+
+                </div> <!--  end .col-lg-3  -->
+
+                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+
+                    <div class="counter-block-1 text-center">
+
+                        <i class="fa fa-users icon"></i>
+                        <span class="counter">3568</span>
+                        <h4 class="text-capitalize">Donors</h4>
+
+                    </div>
+
+                </div> <!--  end .col-lg-3  -->
+
+                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+
+                    <div class="counter-block-1 text-center">
+
+                        <i class="fa fa-building icon"></i>
+                        <span class="counter">1364</span>
+                        <h4 class="text-capitalize">Hospitals</h4>
+
+                    </div>
+
+                </div> <!--  end .col-lg-3  -->
+
+
+            </div> <!-- end row  -->
+
+        </div> <!--  end .container  -->
+
+    </section>
+
+    <!-- SECTION TESTIMONIAL   -->
+
+    <section class="section-content-block section-custom-bg" data-bg_img='@Url.Content("~/Content/Template/images/testimony_feat_bg.jpg")' data-bg_size='cover' data-bg_position='top center' data-bg_opacity="0">
+
+        <div class="container margin-top-80">
+            <div class="row section-heading-wrapper-alt">
+
+                <div class="col-md-12 col-sm-12 text-center no-img-separator">
+                    <h4>Inspiring Stories From Our Community</h4>
+                    <span class="heading-separator heading-separator-horizontal"></span>
+                    <h2 class="extra-large">JOIN US AND SAVE LIVES</h2>
+                    <h4 class="margin-top-12"><small>रक्त दान जीवन दान</small></h4> <!-- Hindi subheading: "Blood Donation is Life Donation" -->
+                </div>
+
+            </div>
+        </div>
+
+        <div class="container theme-custom-box-shadow section-pure-white-bg margin-top-48 margin-bottom-48 wow fadeInUp">
+
+            <div class="row">
+
+                <div class="col-lg-6 col-md-12 col-sm-12">
+
+                    <div class="testimonial-container owl-carousel text-left" data-items="1">
+
+                        <!-- Donor 1 - Indian Context -->
+                        <div class="col-md-12 col-sm-12">
+                            <div class="testimony-layout-1">
+                                <h3 class="people-quote">Regular Donor's Story</h3>
+                                <p class="testimony-text">
+                                    As a Blood Bond donor for 5 years, I've donated across Mumbai, Delhi, and Bengaluru. Knowing my blood helped accident victims during monsoon season gives me immense satisfaction. Every Indian should donate!
+                                </p>
+                                <img src="~/Content/Template/images/user_1.jpg" alt="Aarav Sharma - Blood Donor" />
+                                <h6>Aarav Sharma</h6>
+                                <span>Software Engineer, Bengaluru</span>
+                            </div>
+                        </div>
+
+                        <!-- Donor 2 - Indian Context -->
+                        <div class="col-md-12 col-sm-12">
+                            <div class="testimony-layout-1">
+                                <h3 class="people-quote">First-Time Donor</h3>
+                                <p class="testimony-text">
+                                    I donated blood during a college camp in Jaipur. Blood Bond made it so easy! Their team explained how my single donation could help 3 lives. I'm now a regular donor - my family's tradition.
+                                </p>
+                                <img src="~/Content/Template/images/user_2.jpg" alt="Priya Patel - Blood Donor" />
+                                <h6>Priya Patel</h6>
+                                <span>Teacher, Ahmedabad</span>
+                            </div>
+                        </div>
+
+                        <!-- Recipient Story - Indian Context -->
+                        <div class="col-md-12 col-sm-12">
+                            <div class="testimony-layout-1">
+                                <h3 class="people-quote">Recipient's Gratitude</h3>
+                                <p class="testimony-text">
+                                    When my father needed urgent blood during Diwali, Blood Bond connected us with a donor in 30 minutes. We're forever grateful to the stranger who came to Pune Civil Hospital that night.
+                                </p>
+                                <img src="~/Content/Template/images/user_3.jpg" alt="Anika Reddy - Blood Recipient" />
+                                <h6>Anika Reddy</h6>
+                                <span>Medical Student, Hyderabad</span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="col-lg-6 hidden-md hidden-xs hidden-sm no-padding">
+                    <figure>
+                        <img src="~/Content/Template/images/testimony_feat_img (2).jpg" alt="Blood Bond Donors Across India" class="db" />
+                    </figure>
+                </div>
+
+            </div>
+
+        </div> <!-- end .container -->
+
+    </section>
+
+    <!-- HIGHLIGHT CTA  -->
+
+    <section class="cta-section-1">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                    <h2>We are helping people from 40 years</h2>
+                    <p>
+                        You can give blood at any of our blood donation venues all over the world. We have total sixty thousands donor centers and visit thousands of other venues on various occasions.
+                    </p>
+                </div> <!--  end .col-md-8  -->
+                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                    <a class="btn btn-cta-1 wow bounceIn" href="@Url.Action("MainHome", "Home")#registration-section">Regsiter Now</a>
+                </div> <!--  end .col-md-4  -->
+            </div> <!--  end .row  -->
+        </div>
+    </section>
+
+    <footer style="background-color: #8a0303; color: #ffffff; padding: 50px 0; font-family: 'Arial', sans-serif;">
+
+        <div style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+
+            <!-- Footer Columns -->
+            <div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 30px;">
+
+                <!-- Column 1: About -->
+                <div style="flex: 1; min-width: 250px; margin: 10px;">
+                    <h3 style="color: #ffffff; font-size: 24px; margin-bottom: 20px; text-transform: uppercase;">Donate Blood, Save Lives</h3>
+                    <p style="font-size: 14px; line-height: 1.8; color: #f0f0f0;">
+                        Join us in our mission to provide life-saving blood to those in need. Your donation can make a difference!
+                    </p>
+                    <!-- Call-to-Action Button -->
+                    <a href="#" style="display: inline-block; background-color: #ffffff; color: #8a0303; padding: 10px 20px; text-decoration: none; font-size: 14px; border-radius: 5px; margin-top: 15px; transition: background-color 0.3s ease;">
+                        Donate Now
+                    </a>
+                </div>
+
+                <!-- Column 2: Quick Links -->
+                <div style="flex: 1; min-width: 250px; margin: 10px;">
+                    <h3 style="color: #ffffff; font-size: 24px; margin-bottom: 20px; text-transform: uppercase;">Quick Links</h3>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: 12px;">
+                            <a href="@Url.Action("FinderDonors", "Finder")" style="color: #f0f0f0; text-decoration: none; font-size: 14px; transition: color 0.3s ease; display: flex; align-items: center;">
+                                <i class="fa fa-heartbeat" style="margin-right: 10px; color: #ffffff;"></i> Find a Donor
+                            </a>
+                        </li>
+                        <li style="margin-bottom: 12px;">
+                            <a href="@Url.Action("FAQ", "Home")" style="color: #f0f0f0; text-decoration: none; font-size: 14px; transition: color 0.3s ease; display: flex; align-items: center;">
+                                <i class="fa fa-tint" style="margin-right: 10px; color: #ffffff;"></i> FAQ
+                            </a>
+                        </li>
+                        <li style="margin-bottom: 12px;">
+                            <a href="@Url.Action("AllCampaigns", "Home")" style="color: #f0f0f0; text-decoration: none; font-size: 14px; transition: color 0.3s ease; display: flex; align-items: center;">
+                                <i class="fa fa-calendar" style="margin-right: 10px; color: #ffffff;"></i> Upcoming Camps
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+
+                <!-- Column 3: Contact Info -->
+                <div style="flex: 1; min-width: 250px; margin: 10px;">
+                    <h3 style="color: #ffffff; font-size: 24px; margin-bottom: 20px; text-transform: uppercase;">Contact Us</h3>
+                    <p style="font-size: 14px; line-height: 1.8; color: #f0f0f0;">
+                        <i class="fa fa-map-marker" style="margin-right: 10px; color: #ffffff;"></i>
+                        <a href="https://www.google.com/maps/place/Dombivli+East,+Maharashtra" target="_blank" style="color: #ffffff; text-decoration: none;">Blood Bond, Dombivli East, Maharashtra</a>
+                        <br>
+
+                        <i class="fa fa-phone" style="margin-right: 10px; color: #ffffff;"></i>
+                        <a href="tel:+91 79000 47908" style="color: #ffffff; text-decoration: none;">+91 79000 47908</a>
+                        <br>
+
+                        <i class="fa fa-envelope" style="margin-right: 10px; color: #ffffff;"></i>
+                        <a href="mailto:bloodbond247@gmail.com" style="color: #ffffff; text-decoration: none;">bloodbond247@gmail.com</a>
+
+                    </p>
+                    <!-- Social Media Icons -->
+                    <div class="top-bar-social" style="margin-top: 20px; display: flex; justify-content: center; gap: 15px;">
+                        <a href="https://www.facebook.com/profile.php?id=61573556836084&ref=xav_pl_fb_external_link_ios" style="text-decoration: none; color: #ffffff; transition: transform 0.3s ease;">
+                            <i class="fab fa-facebook-f" style="background-color: rgba(255, 255, 255, 0.1); padding: 12px; border-radius: 50%; width: 45px; height: 45px; text-align: center; line-height: 45px; font-size: 18px; transition: all 0.3s ease;"></i>
+                        </a>
+
+                        <a href="https://www.instagram.com/bloodbond_24x7?igsh=MXhscTNweXk0bzA3dg==" style="text-decoration: none; color: #ffffff; transition: transform 0.3s ease;">
+                            <i class="fab fa-instagram" style="background-color: rgba(255, 255, 255, 0.1); padding: 12px; border-radius: 50%; width: 45px; height: 45px; text-align: center; line-height: 45px; font-size: 18px; transition: all 0.3s ease;"></i>
+                        </a>
+
+
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Footer Bottom -->
+            <div style="text-align: center; margin-top: 40px; border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 20px;">
+                <p style="font-size: 14px; margin: 0; color: #f0f0f0;">
+                    &copy; 2025 Blood Bond. All Rights Reserved.
+                </p>
+            </div>
+
+        </div>
+
+    </footer>
+
+    <!-- END FOOTER  -->
+    <!-- Back To Top Button  -->
+    @*<a id="backTop">Back To Top</a>*@
+<script type="text/javascript">
+    (function (d, t) {
+        var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
+        v.onload = function () {
+            window.voiceflow.chat.load({
+                verify: { projectID: '67e166fbb38caa87c5ed2c32' },
+                url: 'https://general-runtime.voiceflow.com',
+                versionID: 'production',
+                voice: {
+                    url: "https://runtime-api.voiceflow.com"
+                }
+            });
+        }
+        v.src = "https://cdn.voiceflow.com/widget-next/bundle.mjs"; v.type = "text/javascript"; s.parentNode.insertBefore(v, s);
+    })(document, 'script');
+</script>
+
+    <script src="~/Content/Template/js/jquery.min.js"></script>
+    <script src="~/Content/Template/js/bootstrap.min.js"></script>
+    <script src="~/Content/Template/js/wow.min.js"></script>
+    <script src="~/Content/Template/js/jquery.backTop.min.js "></script>
+    <script src="~/Content/Template/js/waypoints.min.js"></script>
+    <script src="~/Content/Template/js/waypoints-sticky.min.js"></script>
+    <script src="~/Content/Template/js/owl.carousel.min.js"></script>
+    <script src="~/Content/Template/js/jquery.stellar.min.js"></script>
+    <script src="~/Content/Template/js/jquery.counterup.min.js"></script>
+    <script src="~/Content/Template/js/venobox.min.js"></script>
+    <script src="~/Content/Template/js/custom-scripts.js"></script>
+</body>
+
+</html>

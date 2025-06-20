@@ -1,0 +1,266 @@
+﻿@*@model BloodDonationApp.Models.CampaignMV
+
+    @{
+        ViewBag.Title = "New Campaign";
+    }
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-8 col-lg-6">
+                <div class="card shadow my-5">
+                    <div class="card-body p-4">
+                        <h2 class="text-center mb-4">Add New Campaign</h2>
+
+                        @using (Html.BeginForm("NewCampaign", "BloodBank", FormMethod.Post, new { enctype = "multipart/form-data", @class = "needs-validation" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                            <div class="mb-3">
+                                @Html.LabelFor(m => m.CampaignTitle, new { @class = "form-label" })
+                                @Html.TextBoxFor(m => m.CampaignTitle, new { @class = "form-control", placeholder = "Enter campaign title" })
+                                @Html.ValidationMessageFor(m => m.CampaignTitle, "", new { @class = "text-danger" })
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    @Html.LabelFor(m => m.CampaignDate, new { @class = "form-label" })
+                                    @Html.TextBoxFor(m => m.CampaignDate, new { @class = "form-control", type = "date" })
+                                    @Html.ValidationMessageFor(m => m.CampaignDate, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="col-md-3">
+                                    @Html.LabelFor(m => m.StartTime, new { @class = "form-label" })
+                                    @Html.TextBoxFor(m => m.StartTime, new { @class = "form-control", type = "time" })
+                                    @Html.ValidationMessageFor(m => m.StartTime, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="col-md-3">
+                                    @Html.LabelFor(m => m.EndTime, new { @class = "form-label" })
+                                    @Html.TextBoxFor(m => m.EndTime, new { @class = "form-control", type = "time" })
+                                    @Html.ValidationMessageFor(m => m.EndTime, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                @Html.LabelFor(m => m.CampaignPhotoFile, new { @class = "form-label" })
+                                <div class="input-group">
+                                    <input type="file" name="CampaignPhotoFile" class="form-control" id="CampaignPhotoFile">
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                @Html.LabelFor(m => m.Location, new { @class = "form-label" })
+                                @Html.TextBoxFor(m => m.Location, new { @class = "form-control", placeholder = "Enter location" })
+                                @Html.ValidationMessageFor(m => m.Location, "", new { @class = "text-danger" })
+                            </div>
+
+                            <div class="mb-3">
+                                @Html.LabelFor(m => m.CampaignDetails, new { @class = "form-label" })
+                                @Html.TextAreaFor(m => m.CampaignDetails, new { @class = "form-control", rows = "4", placeholder = "Enter campaign details" })
+                                @Html.ValidationMessageFor(m => m.CampaignDetails, "", new { @class = "text-danger" })
+                            </div>
+
+                            <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-4">
+                                <button type="submit" class="btn btn-primary">Create Campaign</button>
+                                @Html.ActionLink("Cancel", "AllCampaigns", null, new { @class = "btn btn-secondary" })
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        .card {
+            border: none;
+            border-radius: 1rem;
+        }
+
+        .form-control {
+            border-radius: 0.375rem;
+        }
+
+        .input-group-text {
+            background: transparent;
+            border: none;
+        }
+
+        .btn-primary {
+            background-color: #dc3545;
+            border-color: #dc3545;
+        }
+
+            .btn-primary:hover {
+                background-color: #c82333;
+                border-color: #bd2130;
+            }
+
+        .btn-secondary {
+            background-color: #6c757d;
+            border-color: #6c757d;
+        }
+
+            .btn-secondary:hover {
+                background-color: #5a6268;
+                border-color: #545b62;
+            }
+    </style>*@
+
+@model BloodDonationApp.Models.CampaignMV
+
+@{
+    ViewBag.Title = "New Campaign";
+}
+
+<style>
+    .card {
+        border: none;
+        border-radius: 1rem;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-control {
+        border-radius: 0.375rem;
+        border: 1px solid #ddd;
+        padding: 10px 15px;
+        font-size: 16px;
+        transition: border-color 0.3s ease;
+    }
+
+        .form-control:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+        }
+
+    .input-group-text {
+        background: transparent;
+        border: none;
+    }
+
+    .btn-primary {
+        background-color: #dc3545;
+        border-color: #dc3545;
+        padding: 10px 20px;
+        font-size: 16px;
+        transition: background-color 0.3s ease;
+    }
+
+        .btn-primary:hover {
+            background-color: #c82333;
+            border-color: #bd2130;
+        }
+
+    .btn-secondary {
+        background-color: #6c757d;
+        border-color: #6c757d;
+        padding: 10px 20px;
+        font-size: 16px;
+        transition: background-color 0.3s ease;
+    }
+
+        .btn-secondary:hover {
+            background-color: #5a6268;
+            border-color: #545b62;
+        }
+
+    .text-danger {
+        font-size: 14px;
+        color: #dc3545;
+    }
+
+    .form-label {
+        font-weight: 600;
+        color: #333;
+    }
+
+    .card-body {
+        padding: 30px;
+    }
+
+    h2 {
+        font-size: 28px;
+        font-weight: 600;
+        color: #333;
+        margin-bottom: 25px;
+        text-align: center;
+    }
+
+    .needs-validation .form-control {
+        margin-bottom: 15px;
+    }
+
+    .needs-validation .row {
+        margin-bottom: 15px;
+    }
+
+    .d-grid {
+        margin-top: 20px;
+    }
+</style>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-26 col-md-16 col-lg-18">
+            <!-- Increased width of the box -->
+            <div class="card shadow my-5">
+                <div class="card-body p-4">
+                    <h2 class="text-center mb-4">Add New Campaign</h2>
+
+                    @using (Html.BeginForm("NewCampaign", "BloodBank", FormMethod.Post, new { enctype = "multipart/form-data", @class = "needs-validation" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                        <div class="mb-3">
+                            @Html.LabelFor(m => m.CampaignTitle, new { @class = "form-label" })
+                            @Html.TextBoxFor(m => m.CampaignTitle, new { @class = "form-control", placeholder = "Enter campaign title" })
+                            @Html.ValidationMessageFor(m => m.CampaignTitle, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                @Html.LabelFor(m => m.CampaignDate, new { @class = "form-label" })
+                                @Html.TextBoxFor(m => m.CampaignDate, new { @class = "form-control", type = "date" })
+                                @Html.ValidationMessageFor(m => m.CampaignDate, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-md-3">
+                                @Html.LabelFor(m => m.StartTime, new { @class = "form-label" })
+                                @Html.TextBoxFor(m => m.StartTime, new { @class = "form-control", type = "time" })
+                                @Html.ValidationMessageFor(m => m.StartTime, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-md-3">
+                                @Html.LabelFor(m => m.EndTime, new { @class = "form-label" })
+                                @Html.TextBoxFor(m => m.EndTime, new { @class = "form-control", type = "time" })
+                                @Html.ValidationMessageFor(m => m.EndTime, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            @Html.LabelFor(m => m.CampaignPhotoFile, new { @class = "form-label" })
+                            <div class="input-group">
+                                <input type="file" name="CampaignPhotoFile" class="form-control" id="CampaignPhotoFile">
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            @Html.LabelFor(m => m.Location, new { @class = "form-label" })
+                            @Html.TextBoxFor(m => m.Location, new { @class = "form-control", placeholder = "Enter location" })
+                            @Html.ValidationMessageFor(m => m.Location, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="mb-3">
+                            @Html.LabelFor(m => m.CampaignDetails, new { @class = "form-label" })
+                            @Html.TextAreaFor(m => m.CampaignDetails, new { @class = "form-control", rows = "4", placeholder = "Enter campaign details" })
+                            @Html.ValidationMessageFor(m => m.CampaignDetails, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-4">
+                            <button type="submit" class="btn btn-primary">Create Campaign</button>
+                            @Html.ActionLink("Cancel", "AllCampaigns", null, new { @class = "btn btn-secondary" })
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

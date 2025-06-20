@@ -1,0 +1,203 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="OnlineBloodBankDbModelStoreContainer" CdmEntityContainer="OnlineBloodBankDbEntities">
+    <EntitySetMapping Name="BloodBanKTables">
+      <EntityTypeMapping TypeName="OnlineBloodBankDbModel.BloodBanKTable">
+        <MappingFragment StoreEntitySet="BloodBanKTable">
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="BloodBankID" ColumnName="BloodBankID" />
+          <ScalarProperty Name="BloodBankName" ColumnName="BloodBankName" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="PhoneNo" ColumnName="PhoneNo" />
+          <ScalarProperty Name="Location" ColumnName="Location" />
+          <ScalarProperty Name="Website" ColumnName="Website" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="CityID" ColumnName="CityID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BloodGroupsTables">
+      <EntityTypeMapping TypeName="OnlineBloodBankDbModel.BloodGroupsTable">
+        <MappingFragment StoreEntitySet="BloodGroupsTable">
+          <ScalarProperty Name="BloodGroup" ColumnName="BloodGroup" />
+          <ScalarProperty Name="BloodGroupID" ColumnName="BloodGroupID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CityTables">
+      <EntityTypeMapping TypeName="OnlineBloodBankDbModel.CityTable">
+        <MappingFragment StoreEntitySet="CityTable">
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="CityID" ColumnName="CityID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HospitalTables">
+      <EntityTypeMapping TypeName="OnlineBloodBankDbModel.HospitalTable">
+        <MappingFragment StoreEntitySet="HospitalTable">
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="HospitalID" ColumnName="HospitalID" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="PhoneNo" ColumnName="PhoneNo" />
+          <ScalarProperty Name="Website" ColumnName="Website" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Location" ColumnName="Location" />
+          <ScalarProperty Name="CityID" ColumnName="CityID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RequestTypeTables">
+      <EntityTypeMapping TypeName="OnlineBloodBankDbModel.RequestTypeTable">
+        <MappingFragment StoreEntitySet="RequestTypeTable">
+          <ScalarProperty Name="RequestTypeID" ColumnName="RequestTypeID" />
+          <ScalarProperty Name="RequestType" ColumnName="RequestType" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SeekerTables">
+      <EntityTypeMapping TypeName="OnlineBloodBankDbModel.SeekerTable">
+        <MappingFragment StoreEntitySet="SeekerTable">
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="SeekerID" ColumnName="SeekerID" />
+          <ScalarProperty Name="Fullname" ColumnName="Fullname" />
+          <ScalarProperty Name="Age" ColumnName="Age" />
+          <ScalarProperty Name="CityID" ColumnName="CityID" />
+          <ScalarProperty Name="ContactNo" ColumnName="ContactNo" />
+          <ScalarProperty Name="CNIC" ColumnName="CNIC" />
+          <ScalarProperty Name="GenderID" ColumnName="GenderID" />
+          <ScalarProperty Name="RegestrationDate" ColumnName="RegestrationDate" />
+          <ScalarProperty Name="BloodGroupID" ColumnName="BloodGroupID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AccountStatusTables">
+      <EntityTypeMapping TypeName="OnlineBloodBankDbModel.AccountStatusTable">
+        <MappingFragment StoreEntitySet="AccountStatusTable">
+          <ScalarProperty Name="AccountStatus" ColumnName="AccountStatus" />
+          <ScalarProperty Name="AccountStatusID" ColumnName="AccountStatusID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserTables">
+      <EntityTypeMapping TypeName="OnlineBloodBankDbModel.UserTable">
+        <MappingFragment StoreEntitySet="UserTable">
+          <ScalarProperty Name="ResetPasswordTokenExpiry" ColumnName="ResetPasswordTokenExpiry" />
+          <ScalarProperty Name="ResetPasswordToken" ColumnName="ResetPasswordToken" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="UserTypeID" ColumnName="UserTypeID" />
+          <ScalarProperty Name="AccountStatusID" ColumnName="AccountStatusID" />
+          <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserTypeTables">
+      <EntityTypeMapping TypeName="OnlineBloodBankDbModel.UserTypeTable">
+        <MappingFragment StoreEntitySet="UserTypeTable">
+          <ScalarProperty Name="UserType" ColumnName="UserType" />
+          <ScalarProperty Name="UserTypeID" ColumnName="UserTypeID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DonorTables">
+      <EntityTypeMapping TypeName="OnlineBloodBankDbModel.DonorTable">
+        <MappingFragment StoreEntitySet="DonorTable">
+          <ScalarProperty Name="GenderID" ColumnName="GenderID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="CityID" ColumnName="CityID" />
+          <ScalarProperty Name="Location" ColumnName="Location" />
+          <ScalarProperty Name="CNIC" ColumnName="CNIC" />
+          <ScalarProperty Name="ContactNo" ColumnName="ContactNo" />
+          <ScalarProperty Name="LastDonationDate" ColumnName="LastDonationDate" />
+          <ScalarProperty Name="BloodGroupID" ColumnName="BloodGroupID" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+          <ScalarProperty Name="DonorID" ColumnName="DonorID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GenderTables">
+      <EntityTypeMapping TypeName="OnlineBloodBankDbModel.GenderTable">
+        <MappingFragment StoreEntitySet="GenderTable">
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="GenderID" ColumnName="GenderID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BloodBankStockDetailTables">
+      <EntityTypeMapping TypeName="OnlineBloodBankDbModel.BloodBankStockDetailTable">
+        <MappingFragment StoreEntitySet="BloodBankStockDetailTable">
+          <ScalarProperty Name="CampaignID" ColumnName="CampaignID" />
+          <ScalarProperty Name="DonateDateTime" ColumnName="DonateDateTime" />
+          <ScalarProperty Name="DonorID" ColumnName="DonorID" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="BloodGroupID" ColumnName="BloodGroupID" />
+          <ScalarProperty Name="BloodBankStockID" ColumnName="BloodBankStockID" />
+          <ScalarProperty Name="BloodBankStockDetailID" ColumnName="BloodBankStockDetailID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CampaignTables">
+      <EntityTypeMapping TypeName="OnlineBloodBankDbModel.CampaignTable">
+        <MappingFragment StoreEntitySet="CampaignTable">
+          <ScalarProperty Name="CampaignPhoto" ColumnName="CampaignPhoto" />
+          <ScalarProperty Name="CampaignTitle" ColumnName="CampaignTitle" />
+          <ScalarProperty Name="CampaignDetails" ColumnName="CampaignDetails" />
+          <ScalarProperty Name="Location" ColumnName="Location" />
+          <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+          <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+          <ScalarProperty Name="CampaignDate" ColumnName="CampaignDate" />
+          <ScalarProperty Name="BloodBankID" ColumnName="BloodBankID" />
+          <ScalarProperty Name="CampaignID" ColumnName="CampaignID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BloodBankStockTables">
+      <EntityTypeMapping TypeName="OnlineBloodBankDbModel.BloodBankStockTable">
+        <MappingFragment StoreEntitySet="BloodBankStockTable">
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="BloodGroupID" ColumnName="BloodGroupID" />
+          <ScalarProperty Name="BloodBankID" ColumnName="BloodBankID" />
+          <ScalarProperty Name="BloodBankStockID" ColumnName="BloodBankStockID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AcceptedTypeTables">
+      <EntityTypeMapping TypeName="OnlineBloodBankDbModel.AcceptedTypeTable">
+        <MappingFragment StoreEntitySet="AcceptedTypeTable">
+          <ScalarProperty Name="AcceptedType" ColumnName="AcceptedType" />
+          <ScalarProperty Name="AcceptedTypeID" ColumnName="AcceptedTypeID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RequestStatusTables">
+      <EntityTypeMapping TypeName="OnlineBloodBankDbModel.RequestStatusTable">
+        <MappingFragment StoreEntitySet="RequestStatusTable">
+          <ScalarProperty Name="RequestStatus" ColumnName="RequestStatus" />
+          <ScalarProperty Name="RequestStatusID" ColumnName="RequestStatusID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RequestTables">
+      <EntityTypeMapping TypeName="OnlineBloodBankDbModel.RequestTable">
+        <MappingFragment StoreEntitySet="RequestTable">
+          <ScalarProperty Name="RequestDetails" ColumnName="RequestDetails" />
+          <ScalarProperty Name="ExpectedDate" ColumnName="ExpectedDate" />
+          <ScalarProperty Name="RequestStatusID" ColumnName="RequestStatusID" />
+          <ScalarProperty Name="AcceptedTypeID" ColumnName="AcceptedTypeID" />
+          <ScalarProperty Name="RequestTypeID" ColumnName="RequestTypeID" />
+          <ScalarProperty Name="RequiredBloodGroupID" ColumnName="RequiredBloodGroupID" />
+          <ScalarProperty Name="AcceptedID" ColumnName="AcceptedID" />
+          <ScalarProperty Name="RequestByID" ColumnName="RequestByID" />
+          <ScalarProperty Name="RequestDate" ColumnName="RequestDate" />
+          <ScalarProperty Name="RequestID" ColumnName="RequestID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

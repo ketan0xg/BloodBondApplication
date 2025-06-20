@@ -1,0 +1,136 @@
+﻿@*@model BloodDonationApp.Models.BloodGroupsMV
+
+    @{
+        ViewBag.Title = "Blood Group";
+    }
+
+    <div class="col-md-6">
+        <div class="contact-form-block">
+            <h2 class="contact-title"> New Blood Group </h2>
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.HiddenFor(model => model.BloodGroupID)
+                <div class="form-group">
+
+                    Enter Blood Group
+                    @Html.EditorFor(model => model.BloodGroup, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.BloodGroup, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group">
+
+                    <input type="submit" style="float:right;" value="UPDATE" class="btn btn-theme" />
+
+                    @Html.ActionLink("Back", "AllBloodGroups", null, new { @class = "btn btn-theme" })
+
+                </div>
+
+            }
+
+        </div>
+    </div>*@
+
+
+@model BloodDonationApp.Models.BloodGroupsMV
+
+@{
+    ViewBag.Title = "Blood Group";
+}
+
+<style>
+    .contact-form-block {
+        background: #fff;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        margin-top: 20px;
+    }
+
+    .contact-title {
+        font-size: 28px;
+        margin-bottom: 25px;
+        color: #333;
+        font-weight: 600;
+        text-align: center;
+    }
+
+    .form-control {
+        border-radius: 5px;
+        border: 1px solid #ddd;
+        padding: 10px 15px;
+        font-size: 16px;
+        transition: border-color 0.3s ease;
+    }
+
+        .form-control:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+        }
+
+    .btn-theme {
+        background-color: #28a745;
+        border-color: #28a745;
+        color: #fff;
+        padding: 10px 20px;
+        font-size: 16px;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+    }
+
+        .btn-theme:hover {
+            background-color: #218838;
+            border-color: #218838;
+        }
+
+    .text-danger {
+        font-size: 14px;
+        color: #dc3545;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+        .form-group label {
+            font-weight: 600;
+            color: #333;
+        }
+
+    .text-right {
+        text-align: right;
+    }
+</style>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="contact-form-block">
+                <h2 class="contact-title">Edit Blood Group</h2>
+
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    @Html.HiddenFor(model => model.BloodGroupID)
+
+                    <div class="form-group">
+                        <label>Enter Blood Group</label>
+                        @Html.EditorFor(model => model.BloodGroup, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.BloodGroup, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-group text-right">
+                        <input type="submit" value="UPDATE" class="btn btn-theme" />
+                        @Html.ActionLink("Back", "AllBloodGroups", null, new { @class = "btn btn-theme" })
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

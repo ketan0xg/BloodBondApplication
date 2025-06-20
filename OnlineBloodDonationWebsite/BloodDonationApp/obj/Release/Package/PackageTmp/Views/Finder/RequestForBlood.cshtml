@@ -1,0 +1,169 @@
+﻿@*@model BloodDonationApp.Models.RequestMV
+
+    @{
+        ViewBag.Title = "RequestForBlood";
+    }
+
+    <h2>Request For Blood</h2>
+
+    <div class="col-md-6">
+        <div class="contact-form-block">
+            <h2 class="contact-title">Request For Blood</h2>
+
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.HiddenFor(model=>model.AcceptedID)
+                @Html.HiddenFor(model=>model.AcceptedTypeID)
+                @Html.HiddenFor(model=>model.RequiredBloodGroupID)
+
+                <div class="form-group">
+
+
+                    Select Expected Date
+                    @Html.EditorFor(model => model.ExpectedDate, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.ExpectedDate, "", new { @class = "text-danger" })
+                </div>
+
+
+                <div class="form-group">
+                    Request Detail
+                    @Html.EditorFor(model => model.RequestDetails, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.RequestDetails, "", new { @class = "text-danger" })
+                </div>
+
+
+                <div class="form-group">
+
+                    <input type="submit" style="float:right;" value="Submit" class="btn btn-theme" />
+                    @Html.ActionLink("Find Another Donors", "FinderDonors", null, new { @class = "btn btn-theme" })
+
+                </div>
+
+            }
+
+        </div>
+    </div>*@
+
+@model BloodDonationApp.Models.RequestMV
+
+@{
+    ViewBag.Title = "RequestForBlood";
+}
+<br />
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-10 col-lg-8">
+            <!-- Increased width of the form box -->
+            <div class="contact-form-block" style="padding: 40px;">
+                <!-- Increased padding for height -->
+                <h2 class="contact-title text-center">Request For Blood</h2>
+
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    @Html.HiddenFor(model => model.AcceptedID)
+                    @Html.HiddenFor(model => model.AcceptedTypeID)
+                    @Html.HiddenFor(model => model.RequiredBloodGroupID)
+
+                    <div class="form-group">
+                        <label>Select Expected Date</label>
+                        @Html.EditorFor(model => model.ExpectedDate, new { htmlAttributes = new { @class = "form-control", placeholder = "Select Expected Date" } })
+                        @Html.ValidationMessageFor(model => model.ExpectedDate, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-group">
+                        <label>Request Detail</label>
+                        @Html.EditorFor(model => model.RequestDetails, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter Request Details" } })
+                        @Html.ValidationMessageFor(model => model.RequestDetails, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-group text-right">
+                        <input type="submit" value="Submit" class="btn btn-submit" />
+                        @Html.ActionLink("Find Another Donors", "FinderDonors", null, new { @class = "btn btn-find" })
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .contact-form-block {
+        background: #fff;
+        border-radius: 10px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        margin-top: 20px;
+    }
+
+    .contact-title {
+        font-size: 28px;
+        margin-bottom: 25px;
+        color: #333;
+        font-weight: 600;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .form-control {
+        border-radius: 5px;
+        border: 1px solid #ddd;
+        padding: 10px 15px;
+        font-size: 16px;
+        transition: border-color 0.3s ease;
+    }
+
+        .form-control:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+        }
+
+    .btn-submit {
+        background-color: #28a745; /* Green color */
+        color: #fff;
+        border: none;
+        padding: 12px 24px; /* Increased button size */
+        border-radius: 5px;
+        font-size: 16px;
+        transition: background-color 0.3s ease;
+    }
+
+        .btn-submit:hover {
+            background-color: #218838; /* Darker green on hover */
+        }
+
+    .btn-find {
+        background-color: #dc3545; /* Dark red color */
+        color: #fff;
+        border: none;
+        padding: 12px 24px; /* Increased button size */
+        border-radius: 5px;
+        font-size: 16px;
+        transition: background-color 0.3s ease;
+    }
+
+        .btn-find:hover {
+            background-color: #c82333; /* Darker red on hover */
+        }
+
+    .text-danger {
+        font-size: 14px;
+        color: #dc3545;
+    }
+
+    .text-right {
+        text-align: right;
+    }
+
+    .ml-2 {
+        margin-left: 10px;
+    }
+</style>

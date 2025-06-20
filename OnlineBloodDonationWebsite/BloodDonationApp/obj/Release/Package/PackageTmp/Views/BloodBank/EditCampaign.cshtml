@@ -1,0 +1,294 @@
+﻿@*@model BloodDonationApp.Models.CampaignMV
+
+    @{
+        ViewBag.Title = "Edit Campaign";
+    }
+
+    <div class="col-md-6">
+        <div class="contact-form-block">
+            <h2 class="contact-title">Edit Campaign</h2>
+
+            @using (Html.BeginForm("EditCampaign", "BloodBank", FormMethod.Post,
+                new { enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.HiddenFor(model => model.CampaignID)
+                @Html.HiddenFor(model => model.BloodBankID)
+
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                <div class="form-group">
+                    Enter Campaign Title
+                    @Html.EditorFor(model => model.CampaignTitle,
+                        new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.CampaignTitle, "",
+                        new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group">
+                    Campaign Date
+                    @Html.EditorFor(model => model.CampaignDate,
+                        new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.CampaignDate, "",
+                        new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group">
+                    Start Time
+                    @Html.EditorFor(model => model.StartTime,
+                        new { htmlAttributes = new { @class = "form-control", type = "time" } })
+                    @Html.ValidationMessageFor(model => model.StartTime, "",
+                        new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group">
+                    End Time
+                    @Html.EditorFor(model => model.EndTime,
+                        new { htmlAttributes = new { @class = "form-control", type = "time" } })
+                    @Html.ValidationMessageFor(model => model.EndTime, "",
+                        new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group">
+                    Campaign Photo
+                    <span class="btn btn-theme-invert btn-file">
+                        @Html.TextBoxFor(model => model.CampaignPhotoFile,
+                            new { type = "file", @class = "form-control" })
+                    </span>
+                    @if (!string.IsNullOrEmpty(Model.CampaignPhoto))
+                    {
+                        <img src="@Url.Content(Model.CampaignPhoto)"
+                             alt="Current Banner"
+                             style="max-width: 200px; margin-top: 10px;" />
+                    }
+                </div>
+
+                <div class="form-group">
+                    Location
+                    @Html.EditorFor(model => model.Location,
+                        new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Location, "",
+                        new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group">
+                    Campaign Details
+                    @Html.TextAreaFor(model => model.CampaignDetails,
+                        new { @class = "form-control", rows = 4 })
+                    @Html.ValidationMessageFor(model => model.CampaignDetails, "",
+                        new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group">
+                    <input type="submit" style="float:right;"
+                           value="Update Campaign" class="btn btn-theme" />
+                    @Html.ActionLink("Cancel", "AllCampaigns", null,
+                        new { @class = "btn btn-secondary" })
+                </div>
+            }
+        </div>
+    </div>*@
+
+
+@model BloodDonationApp.Models.CampaignMV
+
+@{
+    ViewBag.Title = "Edit Campaign";
+}
+
+<style>
+    .contact-form-block {
+        background: #fff;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        margin-top: 20px;
+    }
+
+    .contact-title {
+        font-size: 28px;
+        margin-bottom: 25px;
+        color: #333;
+        font-weight: 600;
+        text-align: center;
+    }
+
+    .form-control {
+        border-radius: 5px;
+        border: 1px solid #ddd;
+        padding: 10px 15px;
+        font-size: 16px;
+        transition: border-color 0.3s ease;
+    }
+
+        .form-control:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+        }
+
+    .btn-theme {
+        background-color: #28a745;
+        border-color: #28a745;
+        color: #fff;
+        padding: 10px 20px;
+        font-size: 16px;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+    }
+
+        .btn-theme:hover {
+            background-color: #218838;
+            border-color: #218838;
+        }
+
+    .btn-secondary {
+        background-color: #6c757d;
+        border-color: #6c757d;
+        color: #fff;
+        padding: 10px 20px;
+        font-size: 16px;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+    }
+
+        .btn-secondary:hover {
+            background-color: #5a6268;
+            border-color: #5a6268;
+        }
+
+    .btn-theme-invert {
+        background-color: #dc3545;
+        border-color: #dc3545;
+        color: #fff;
+        padding: 10px 20px;
+        font-size: 16px;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+    }
+
+        .btn-theme-invert:hover {
+            background-color: #c82333;
+            border-color: #c82333;
+        }
+
+    .text-danger {
+        font-size: 14px;
+        color: #dc3545;
+    }
+
+    .btn-file {
+        position: relative;
+        overflow: hidden;
+    }
+
+        .btn-file input[type="file"] {
+            position: absolute;
+            top: 0;
+            right: 0;
+            min-width: 100%;
+            min-height: 100%;
+            font-size: 100px;
+            text-align: right;
+            filter: alpha(opacity=0);
+            opacity: 0;
+            outline: none;
+            background: white;
+            cursor: inherit;
+            display: block;
+        }
+
+    img {
+        max-width: 100%;
+        height: auto;
+        margin-top: 10px;
+        border-radius: 5px;
+    }
+</style>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-22">
+            <div class="contact-form-block">
+                <h2 class="contact-title">Edit Campaign</h2>
+
+                @using (Html.BeginForm("EditCampaign", "BloodBank", FormMethod.Post,
+                    new { enctype = "multipart/form-data" }))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.HiddenFor(model => model.CampaignID)
+                    @Html.HiddenFor(model => model.BloodBankID)
+
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                    <div class="form-group">
+                        <label>Enter Campaign Title</label>
+                        @Html.EditorFor(model => model.CampaignTitle,
+                            new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.CampaignTitle, "",
+                            new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-group">
+                        <label>Campaign Date</label>
+                        @Html.EditorFor(model => model.CampaignDate,
+                            new { htmlAttributes = new { @class = "form-control", type = "date" } })
+                        @Html.ValidationMessageFor(model => model.CampaignDate, "",
+                            new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-group">
+                        <label>Start Time</label>
+                        @Html.EditorFor(model => model.StartTime,
+                            new { htmlAttributes = new { @class = "form-control", type = "time" } })
+                        @Html.ValidationMessageFor(model => model.StartTime, "",
+                            new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-group">
+                        <label>End Time</label>
+                        @Html.EditorFor(model => model.EndTime,
+                            new { htmlAttributes = new { @class = "form-control", type = "time" } })
+                        @Html.ValidationMessageFor(model => model.EndTime, "",
+                            new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-group">
+                        <label>Campaign Photo</label>
+                        <div class="btn btn-theme-invert btn-file">
+                            @Html.TextBoxFor(model => model.CampaignPhotoFile,
+                                new { type = "file", @class = "form-control" })
+                        </div>
+                        @if (!string.IsNullOrEmpty(Model.CampaignPhoto))
+                        {
+                            <img src="@Url.Content(Model.CampaignPhoto)"
+                                 alt="Current Banner"
+                                 style="max-width: 200px; margin-top: 10px;" />
+                        }
+                    </div>
+
+                    <div class="form-group">
+                        <label>Location</label>
+                        @Html.EditorFor(model => model.Location,
+                            new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Location, "",
+                            new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-group">
+                        <label>Campaign Details</label>
+                        @Html.TextAreaFor(model => model.CampaignDetails,
+                            new { @class = "form-control", rows = 4 })
+                        @Html.ValidationMessageFor(model => model.CampaignDetails, "",
+                            new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-group text-right">
+                        <input type="submit" value="Update Campaign" class="btn btn-theme" />
+                        @Html.ActionLink("Cancel", "AllCampaigns", null,
+                            new { @class = "btn btn-secondary" })
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

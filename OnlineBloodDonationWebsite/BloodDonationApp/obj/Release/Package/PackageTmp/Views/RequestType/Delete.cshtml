@@ -1,0 +1,138 @@
+﻿@*@model BloodDonationApp.Models.RequestTypeMV
+
+    @{
+        ViewBag.Title = "Request Type";
+    }
+
+
+
+    <h3>Are you sure you want to delete this?</h3>
+    <div>
+        <h4>Request Type</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.RequestType)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.RequestType)
+            </dd>
+
+        </dl>
+
+        @using (Html.BeginForm()) {
+            @Html.AntiForgeryToken()
+
+    <div class="form-actions no-color">
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        @Html.ActionLink("Back", "AllRequestType", null, new { @class = "btn btn-theme-invert" })
+    </div>
+        }
+    </div>*@
+
+@model BloodDonationApp.Models.RequestTypeMV
+
+@{
+    ViewBag.Title = "Request Type";
+}
+
+<style>
+    .dl-horizontal dt {
+        float: left;
+        width: 160px;
+        clear: left;
+        text-align: right;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        font-weight: 600;
+        color: #333;
+    }
+
+    .dl-horizontal dd {
+        margin-left: 180px;
+        margin-bottom: 15px;
+    }
+
+    .btn-danger {
+        background-color: #dc3545;
+        border-color: #dc3545;
+        color: #fff;
+        padding: 10px 20px;
+        font-size: 16px;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+    }
+
+        .btn-danger:hover {
+            background-color: #c82333;
+            border-color: #c82333;
+        }
+
+    .btn-theme-invert {
+        background-color: #6c757d;
+        border-color: #6c757d;
+        color: #fff;
+        padding: 10px 20px;
+        font-size: 16px;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+    }
+
+        .btn-theme-invert:hover {
+            background-color: #5a6268;
+            border-color: #545b62;
+        }
+
+    .form-actions {
+        margin-top: 20px;
+    }
+
+    h3, h4 {
+        color: #333;
+        font-weight: 600;
+    }
+
+    hr {
+        border-top: 1px solid #ddd;
+    }
+
+    .contact-form-block {
+        background: #fff;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        margin-top: 20px;
+    }
+
+    .text-center {
+        text-align: center;
+    }
+</style>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="contact-form-block">
+                <h3 class="text-center">Are you sure you want to delete this?</h3>
+                <h4 class="text-center">Request Type</h4>
+                <hr />
+                <dl class="dl-horizontal">
+                    <dt>@Html.DisplayNameFor(model => model.RequestType)</dt>
+                    <dd>@Html.DisplayFor(model => model.RequestType)</dd>
+                </dl>
+
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-actions text-center">
+                        <input type="submit" value="Delete" class="btn btn-danger" />
+                        @Html.ActionLink("Back", "AllRequestType", null, new { @class = "btn btn-theme-invert" })
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

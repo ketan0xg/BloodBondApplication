@@ -1,0 +1,104 @@
+﻿@model IEnumerable<BloodDonationApp.Models.RequestListMV>
+<br />
+<div class="col-md-12">
+    <div class="contact-form-block">
+       
+        <h2 class="contact-title">All Request</h2>
+        
+
+        <!-- Responsive table wrapper -->
+        <div class="table-responsive">
+            <table class="table table-hover table-striped">
+                <thead>
+                    <tr>
+                        <th>Request Date</th>
+                        <th>Requested Person</th>
+                        <th>Required Blood Group</th>
+                        <th>Expected Date</th>
+                        <th>Description</th>
+                        <th>Status</th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@Html.DisplayFor(modelItem => item.RequestDate)</td>
+                            <td>@item.RequestBy (@item.RequestType - @item.ContactNo)</td>
+                            <td>@Html.DisplayFor(modelItem => item.BloodGroup)</td>
+                            <td>@Html.DisplayFor(modelItem => item.ExpectedDate)</td>
+                            <td>@Html.DisplayFor(modelItem => item.RequestDetails)</td>
+                            <td>@Html.DisplayFor(modelItem => item.RequestStatus)</td>
+                           
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Custom CSS for better styling -->
+<style>
+    .contact-form-block {
+        background-color: #f9f9f9;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .contact-title {
+        color: #333;
+        margin-bottom: 20px;
+    }
+
+    .table-responsive {
+        overflow-x: auto;
+    }
+
+    .table-striped tbody tr:nth-of-type(odd) {
+        background-color: rgba(0, 0, 0, 0.05);
+    }
+
+    .table-hover tbody tr:hover {
+        background-color: rgba(0, 123, 255, 0.1);
+    }
+
+    .btn-theme {
+        background-color: #dc3545;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        text-decoration: none;
+    }
+
+        .btn-theme:hover {
+            background-color: #0056b3;
+        }
+
+    .btn-success {
+        background-color: #28a745;
+        border: none;
+    }
+
+    .btn-danger {
+        background-color: #dc3545;
+        border: none;
+    }
+
+    .btn-group .btn {
+        margin-right: 5px;
+    }
+
+    .btn-sm {
+        padding: 5px 10px;
+        font-size: 14px;
+    }
+
+    /* Ensure table cells don't break layout on small screens */
+    .table td, .table th {
+        white-space: nowrap;
+    }
+</style>

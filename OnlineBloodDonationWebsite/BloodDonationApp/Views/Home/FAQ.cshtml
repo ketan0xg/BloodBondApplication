@@ -1,0 +1,332 @@
+﻿
+@{
+    ViewBag.Title = "FAQ";
+}
+<body>
+    <style>
+        /* Section Header */
+.section-header {
+    margin-bottom: 60px;
+    color:blue;
+}
+
+.section-heading {
+    font-size: 36px;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 20px;
+    position: relative;
+    display: inline-block;
+    animation: fadeInDown 1s ease;
+}
+
+.section-heading::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background-color: #ff6b6b;
+    margin: 10px auto 0;
+    animation: expandLine 1s ease;
+}
+
+.section-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.divider-line {
+    width: 80px;
+    height: 2px;
+    background-color: #ddd;
+    margin: 0 10px;
+    animation: fadeIn 1s ease;
+}
+
+.divider-icon {
+    font-size: 24px;
+    color: #ff6b6b;
+    animation: bounce 2s infinite;
+}
+
+.section-subheading {
+    font-size: 18px;
+    color: #666;
+    margin-top: 20px;
+    animation: fadeInUp 1s ease;
+}
+
+/* Animations */
+@@keyframes fadeInDown {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@@keyframes expandLine {
+    0% {
+        width: 0;
+    }
+    100% {
+        width: 60px;
+    }
+}
+
+@@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-10px);
+    }
+    60% {
+        transform: translateY(-5px);
+    }
+}
+    </style>
+    <!--  SECTION FAQ -->
+
+    <section class="section-content-block section-faq">
+
+        <div class="container">
+
+            <div class="row">
+
+                <div class="col-md-12 col-sm-12 text-center">
+                    <div class="section-header">
+                        <h2 class="section-heading">F.A.Q</h2>
+                        <div class="section-divider">
+                            <span class="divider-line"></span>
+                            <span class="divider-icon">💉</span> <!-- You can replace this with an icon font or SVG -->
+                            <span class="divider-line"></span>
+                        </div>
+                        <p class="section-subheading">
+                            Learn more about blood donation and discover how you can make a difference.
+                        </p>
+                    </div>
+                </div> <!-- end .col-sm-10  -->
+
+            </div> <!--  end .row  -->
+
+            <div class="row">
+
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" id="accordion">
+
+                    <div class="panel panel-default faq-box">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">Who can donate blood?</a>
+                            </h4>
+                        </div>
+                        <div id="collapseOne" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                Most people who are in good health, weigh at least 110 pounds, and are at least 17 years old (or 16 with parental consent in some areas) can donate blood. However, there are some medical conditions and travel histories that may temporarily or permanently defer someone from donating.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="panel panel-default faq-box">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">How often can I donate blood?</a>
+                            </h4>
+                        </div>
+                        <div id="collapseTwo" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                You can donate whole blood every 56 days, or approximately every 8 weeks. For platelet donations, you can donate more frequently, up to 24 times a year, depending on the donation center's guidelines.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="panel panel-default faq-box">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">How does the online blood donation process work?</a>
+                            </h4>
+                        </div>
+                        <div id="collapseThree" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                Our online platform allows you to register as a donor, find nearby blood drives or donation centers, and schedule appointments. You can also receive notifications about urgent blood needs in your area.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="panel panel-default faq-box">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFour">Is my personal information safe on this platform?</a>
+                            </h4>
+                        </div>
+                        <div id="collapseFour" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                Yes, we take your privacy seriously. All personal information is securely stored and only used to facilitate blood donation and communication. We do not share your data with third parties without your consent.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default faq-box">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion2" href="#collapseEleven">
+                                    Can pregnant or breastfeeding women donate blood?
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapseEleven" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                Pregnant women are not eligible to donate blood. Breastfeeding mothers are usually advised to wait until their baby is at least six months old. Check with your doctor or local blood bank for specific guidelines.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="panel panel-default faq-box">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwelve">
+                                    How is my donated blood used?
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapseTwelve" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                Donated blood is separated into components like red blood cells, plasma, and platelets. These are used to treat patients with anemia, cancer, severe injuries, or during surgeries. Your donation can save multiple lives.
+                            </div>
+                        </div>
+                    </div>
+
+                </div> <!-- end .col-md-6  -->
+
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" id="accordion2">
+
+                    <div class="panel panel-default faq-box">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion2" href="#collapseFive">What should I do before donating blood?</a>
+                            </h4>
+                        </div>
+                        <div id="collapseFive" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                Before donating, make sure to eat a healthy meal, drink plenty of water, and get a good night's sleep. Avoid fatty foods and alcohol before your donation. Bring a valid ID and any required documents to the donation center.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="panel panel-default faq-box">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion2" href="#collapseSix">What happens after I donate blood?</a>
+                            </h4>
+                        </div>
+                        <div id="collapseSix" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                After donating, you'll rest for a short period and have a snack or drink to replenish your energy. Your blood will be tested, processed, and distributed to hospitals or patients in need. You'll also receive information on how your donation is being used.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="panel panel-default faq-box">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion2" href="#collapseSeven">Can I donate blood if I have a tattoo or piercing?</a>
+                            </h4>
+                        </div>
+                        <div id="collapseSeven" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                In most cases, yes. If your tattoo or piercing was done in a licensed facility using sterile equipment, you can donate blood after a short waiting period (usually 3-6 months). Check with your local donation center for specific guidelines.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="panel panel-default faq-box">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion2" href="#collapseEight">How can I organize a blood drive in my community?</a>
+                            </h4>
+                        </div>
+                        <div id="collapseEight" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                You can use our platform to connect with local blood donation organizations and get started. We provide resources and support to help you plan, promote, and host a successful blood drive in your area.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="panel panel-default faq-box">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion2" href="#collapseNine">
+                                    Are there any side effects of donating blood?
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapseNine" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                Most people experience no side effects after donating blood. Some may feel lightheaded or fatigued, but this usually subsides quickly. Staying hydrated and resting after donation can help minimize discomfort.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="panel panel-default faq-box">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion2" href="#collapseTen">
+                                    Can I donate blood if I am on medication?
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapseTen" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                It depends on the medication you are taking. Some medications may not affect your eligibility, while others may require a waiting period. Consult with your local blood donation center to confirm your eligibility.
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+                </div> <!-- end .col-md-12  -->
+
+            </div> <!-- end .row  -->
+
+        </div> <!-- end .container  -->
+        <!-- CTA Section -->
+        <div class="text-center mt-5 pt-3" >
+            <p class="mb-4">Still have questions? We're here to help!</p>
+            <a href="tel:+917400286545" class="btn btn-danger btn-lg px-4 me-4">
+                <i class="fas fa-phone-alt me-2"></i> Contact Us
+            </a>
+            <a href="@Url.Action("MainHome", "Home")#registration-section" class="btn btn-outline-danger btn-lg px-4">
+
+                <i class="fas fa-tint me-2"></i> Donate Now
+            </a>
+        </div>
+
+
+    </section> <!--  end .section-faq -->
+
+</body>

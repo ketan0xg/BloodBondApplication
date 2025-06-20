@@ -1,0 +1,197 @@
+﻿@*@model IEnumerable<BloodDonationApp.Models.RequestListMV>
+
+    @{
+        ViewBag.Title = "All Request";
+    }
+
+    <div class="col-md-10">
+        <div class="contact-form-block">
+            <h2 class="contact-title">All Request</h2>
+            <p>
+                @Html.ActionLink("New Request", "FinderDonors", null, new { @class = "btn btn-theme" })
+            </p>
+            <table class="table table-hover">
+                <tr>
+                    <th>
+                        Request Date
+                    </th>
+
+                    <th>
+                        Requested Person
+                    </th>
+                    <th>
+                      Required Blood Group
+                    </th>
+                    <th>
+                        Expected Date
+                    </th>
+                    <th>
+                        Description
+                    </th>
+
+                    <th>
+                        Status
+                    </th>
+
+                    <th>Action</th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+
+                            @Html.DisplayFor(modelItem => item.RequestDate)
+                        </td>
+
+                        <td>
+                            @item.AcceptedFullName (@item.AcceptedType - @item.ContactNo )
+
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.BloodGroup)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ExpectedDate)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.RequestDetails)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.RequestStatus)
+                        </td>
+                        <td>
+                            @if (item.RequestStatusID == 1)
+                            {
+                                @Html.ActionLink("Cancel", "CancelRequest", new { id = item.RequestID }, new { @class = "btn btn-danger" })
+                            }
+                            else if (item.RequestStatusID == 2)
+                            {
+                                @Html.ActionLink("Complete", "CompleteRequest", new { id = item.RequestID }, new { @class = "btn btn-success" })
+                            }
+                        </td>
+
+                    </tr>
+                }
+
+            </table>
+        </div>
+    </div>*@
+
+@model IEnumerable<BloodDonationApp.Models.RequestListMV>
+
+@{
+    ViewBag.Title = "All Request";
+}
+
+<br />
+<div class="col-md-12">
+    <div class="contact-form-block">
+        <h2 class="contact-title">All Request</h2>
+        <p>
+            @Html.ActionLink("New Request", "FinderDonors", null, new { @class = "btn btn-theme" })
+        </p>
+        <div class="table-responsive">
+            <table class="table table-hover table-striped">
+                <thead>
+                    <tr>
+                        <th>Request Date</th>
+                        <th>Requested Person</th>
+                        <th>Required Blood Group</th>
+                        <th>Expected Date</th>
+                        <th>Description</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@Html.DisplayFor(modelItem => item.RequestDate)</td>
+                            <td>@item.AcceptedFullName (@item.AcceptedType - @item.ContactNo)</td>
+                            <td>@Html.DisplayFor(modelItem => item.BloodGroup)</td>
+                            <td>@Html.DisplayFor(modelItem => item.ExpectedDate)</td>
+                            <td>@Html.DisplayFor(modelItem => item.RequestDetails)</td>
+                            <td>@Html.DisplayFor(modelItem => item.RequestStatus)</td>
+                            <td>
+                                @if (item.RequestStatusID == 1)
+                                {
+                                    @Html.ActionLink("Cancel", "CancelRequest", new { id = item.RequestID }, new { @class = "btn btn-danger btn-sm" })
+                                }
+                                else if (item.RequestStatusID == 2)
+                                {
+                                    @Html.ActionLink("Complete", "CompleteRequest", new { id = item.RequestID }, new { @class = "btn btn-success btn-sm" })
+                                }
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<style>
+    .contact-form-block {
+        background: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .contact-title {
+        font-size: 24px;
+        margin-bottom: 20px;
+        color: #333;
+    }
+
+    .table-responsive {
+        overflow-x: auto;
+    }
+
+    .table-striped tbody tr:nth-of-type(odd) {
+        background-color: rgba(0, 0, 0, 0.05);
+    }
+
+    .table-hover tbody tr:hover {
+        background-color: rgba(0, 123, 255, 0.1);
+    }
+
+    .btn-theme {
+        background-color: #dc3545;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 4px;
+        transition: background-color 0.3s ease;
+    }
+
+        .btn-theme:hover {
+            background-color: #0056b3;
+        }
+
+    .btn-danger, .btn-success {
+        padding: 5px 10px;
+        font-size: 14px;
+        border-radius: 4px;
+    }
+
+    .btn-danger {
+        background-color: #dc3545;
+        border: none;
+    }
+
+        .btn-danger:hover {
+            background-color: #c82333;
+        }
+
+    .btn-success {
+        background-color: #28a745;
+        border: none;
+    }
+
+        .btn-success:hover {
+            background-color: #218838;
+        }
+</style>

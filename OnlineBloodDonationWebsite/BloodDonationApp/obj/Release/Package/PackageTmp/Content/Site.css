@@ -1,0 +1,51 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+
+
+/* Adds spacing between buttons */
+.btn-custom {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 50px;
+    color: white;
+    text-decoration: none;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    border: none;
+    cursor: pointer;
+}
+
+/* Blue Button */
+.btn-blue {
+    background: linear-gradient(90deg, #4a90e2, #357ae8);
+}
+
+    .btn-blue:hover {
+        background: linear-gradient(90deg, #357ae8, #2a6eb9);
+        transform: scale(1.05);
+    }
+
+/* Button Icon */
+.btn-custom i {
+    margin-left: 8px;
+}
